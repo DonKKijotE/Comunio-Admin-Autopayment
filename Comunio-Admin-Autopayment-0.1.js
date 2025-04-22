@@ -33,16 +33,16 @@ var $ = window.$;
 
             var participantes = $(response).find("#tablestandings tr:not(:first)");
 
-            $(participantes).each(function() {
+            $(participantes).each(function(index) {
 
-
+            var indice = index + 1;
             var nombre = $(this).find("td").eq(1).text();
             var puntos = $(this).find("td").eq(2).text();
             var pasta = puntos * 50000;
             var jugador_id = $(this).find('a').attr('href').substring(21);
             var pago_url = "https://classic.comunio.es/administration.phtml?penalty_x=22&newsDis=messageDis&pid_to="+ jugador_id +"&amount="+ pasta +"&content=Pago&cancel=-1&send_x=33";
             //console.log(nombre + ' ' + puntos);
-            var fila = '<tr class="info_jugador"><td>'+ nombre +'</td><td>'+ puntos +'</td><td>'+ pasta +'</td><td><a href="'+ pago_url +'" target="_blank">Pagar</a></td></tr>';
+            var fila = '<tr class="info_jugador"><td>' + indice + '. ' + nombre +'</td><td>'+ puntos +'</td><td>'+ pasta +'</td><td><a href="'+ pago_url +'" target="_blank"> ' + indice + '. Pagar</a></td></tr>';
             $('.info_jugador').last().after(fila);
 
 
